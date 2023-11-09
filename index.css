@@ -8,6 +8,7 @@ body {
 p{
     font-family: Arial, sans-serif;
     text-align: center;
+    align-items: center;
 }
 /* Style the h1 element (Palindrome Finder) */
 h1 {
