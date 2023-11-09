@@ -40,6 +40,11 @@
             }
 
             remainingChances--;
+
+            // Delay before clearing the result (e.g., 3 seconds)
+            setTimeout(function () {
+                resultElement.textContent = "";
+            }, 3000);
         } else {
             resultElement.textContent = "Game Over. You've used up all your chances.";
         }
