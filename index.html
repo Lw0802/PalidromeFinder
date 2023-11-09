@@ -8,15 +8,16 @@
 <h2>Enter your word here:</h2>
 <form>
     <label for="fname">Word</label>
-    <input type="text" id="fname" name="word"><br><br>
+    <input type="text" id="word" placeholder="Enter your word"><br><br>
    
     <button onclick="myFuction()">Submit</button>
   </form>
   <script>
 
-function myFunction(a, b) {
-  return a * b;
-}
+    function myFunction() {
+        var wordInput = document.getElementById("word");
+        var finalWord = wordInput.value
+    }
     let word = document.querySelector('[name="word"]').value
     console.log(word)
   </script>
