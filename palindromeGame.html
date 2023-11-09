@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Palindrome Guessing Game</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<h1>Palindrome Guessing Game</h1>
+<p>Guess if the given word is a palindrome or not. You have 10 chances.</p>
+<h2>Enter your word below</h2>
+<form>
+    <input type="text" id="word" placeholder="Enter your word"><br><br>
+    <button onclick="playGame()">Submit</button>
+</form>
+<p id="result"></p>
+<script>
+    var remainingChances = 10;
+    var palindromes = ["racecar", "level", "deified", "radar", "civic", "madam", "rotor", "noon", "stats", "tenet"];
+    var currentIndex = 0;
+
+    function playGame() {
+        var wordInput = document.getElementById("word");
+        var inputWord = wordInput.value;
+        var isPalindrome = isPalindromeString(inputWord);
+
+        var resultElement = document.getElementById("result");
+
+        if (remainingChances > 0) {
+            if (isPalindrome && inputWord === palindromes[currentIndex]) {
+                resultElement.textContent = "Correct! It's a palindrome.";
+                currentIndex++;
+            } else {
+                resultElement.textContent = "Sorry, that's not a palindrome.";
+            }
+
+            if (currentIndex < palindromes.length) {
+                resultElement.textContent += " Next word: " + palindromes[currentIndex];
+            } else {
+                resultElement.textContent += " Game Over. You've completed the game!";
+            }
+
+            remainingChances--;
+        } else {
+            resultElement.textContent = "Game Over. You've used up all your chances.";
+        }
+    }
+
+    function isPalindromeString(str) {
+        var cleanStr = str.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+        return cleanStr === cleanStr.split('').reverse().join('');
+    }
+</script>
+</body>
+</html>
