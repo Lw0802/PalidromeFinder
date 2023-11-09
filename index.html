@@ -10,11 +10,11 @@
     
     <input type="text" id="word" placeholder="Enter your word"><br><br>
    
-    <button onclick="myFunction()">Submit</button>
+    <button onclick="myFunction(word)">Submit</button>
   </form>
   <script>
 
-    function myFunction() {
+    function myFunction(s) {
         var wordInput = document.getElementById("word");
         var finalWord = wordInput.value
     
