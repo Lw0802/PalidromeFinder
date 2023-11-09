@@ -18,7 +18,17 @@
         var wordInput = document.getElementById("word");
         var finalWord = wordInput.value
     
-    
+        var removeChar = finalWord.replace(/[^A-Z0-9]/ig, "").toLowerCase();
+     /* reverse removeChar for comparison*/
+  var checkPalindrome = removeChar.split('').reverse().join('');
+
+/* Check to see if str is a Palindrome*/
+ if(removeChar === checkPalindrome){
+   alert("true")
+ }else{
+  alert("false")
+ }
+
     alert(finalWord)
     }
   </script>
