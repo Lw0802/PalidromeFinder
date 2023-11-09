@@ -5,7 +5,10 @@ body {
     background-color: #f0f0f0;
     font-family: Arial, sans-serif;
 }
-
+p{
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
 /* Style the h1 element (Palindrome Finder) */
 h1 {
     text-align: center;
