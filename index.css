@@ -1,7 +1,50 @@
-h1{
-    
-    text-align: center;
+/* index.css */
+
+/* Apply a background color and text color to the body */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
 }
-body{
-    align-content: center;
+
+/* Style the h1 element (Palindrome Finder) */
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Style the h2 element (Enter your word here) */
+h2 {
+    text-align: center;
+    color: #666;
+}
+
+/* Style the form container */
+form {
+    text-align: center;
+    margin: 0 auto;
+    width: 300px;
+}
+
+/* Style the input field */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style the submit button */
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Hover effect for the button */
+button:hover {
+    background-color: #0056b3;
 }
