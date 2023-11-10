@@ -2,17 +2,21 @@
 <html>
 <head>
     <title>Palindrome Guessing Game</title>
-    <link rel="stylesheet" href="palindromGame.css">
+    <link rel="stylesheet" href="palindromGame.css"><!--External Css-->
 </head>
 <body>
 <h1>Palindrome Guessing Game</h1>
 <p>You have 5 lives to try and guess any 10 palindromes</p>
 <p>A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward e.g. Racecar</p>
+<!-- I wanted to implent dynamic lives and words guessed so i implemented  a span with a unique id that calls to a fuction-->
+<!-- These functions make the numbers change, 0 and 5 are the defualt-->
 <p>You have guessed <span id="guessed-count">0</span> Palindromes, with <span id="remaining-lives">5</span> lives Remaining</p>
 <h2>Enter your word below</h2>
 <form>
     <input type="text" id="word" placeholder="Enter your word"><br><br>
-    <button onclick="playGame(event)">Submit</button>
+    <!-- Calling the function-->
+    <!-- Not with a string to pasre through just an event, the data gets called in the function itself-->
+    <button onclick="is_palindrome(event)">Submit</button>
 </form>
 <p id="result"></p>
 <p id="remaining-words"></p>
@@ -20,7 +24,7 @@
     var totalLives = 5;
     var guessedPalindromes = [];
 
-    function playGame(event) {
+    function is_palindrome(event) {
         event.preventDefault(); // prevent form submission and page refresh
 
         var wordInput = document.getElementById("word");
