@@ -17,7 +17,7 @@
     <input type="text" id="word" placeholder="Enter your word">
     <br><br>
     <!-- On the button click the function gets called and parses throught the value of the input text -->
-    <button onclick="myFunction(document.getElementById('word').value)">Submit</button>
+    <button onclick="is_palindrome(document.getElementById('word').value)">Submit</button>
   </form>
   <p id="result"></p>
   <br>
@@ -27,7 +27,7 @@
 
   <script>
 
-function myFunction(word) {
+function is_palindrome(word) {
     // Remove non-alphanumeric characters and convert to lowercase
     var removeChar = word.replace(/[^A-Z0-9]/ig, "").toLowerCase();
 
