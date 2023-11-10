@@ -12,12 +12,13 @@
 <h2>Enter your word below</h2>
 <form>
     <input type="text" id="word" placeholder="Enter your word"><br><br>
-    <button onclick="myFunction(word)">Submit</button>
+    <button onclick="myFunction(document.getElementById('word').value)">Submit</button>
+
   </form>
   <script>
 
     function myFunction(word) {
-        var finalWord = wordInput.value
+        
     
         var removeChar = word.replace(/[^A-Z0-9]/ig, "").toLowerCase();
      /* reverse removeChar for comparison*/
