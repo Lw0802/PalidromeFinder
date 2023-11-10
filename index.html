@@ -1,59 +1,42 @@
 <!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Palindrome Finder</title>
-    <!-- Linking to external CSS -->
+    <title>Palindrome Finder</title>
     <link rel="stylesheet" href="index.css">
 </head>
-
 <body>
 <h1>Palindrome Finder</h1>
 <br>
 <p>This simple Javascript function will allow you to check whether a given string is a palindrome or not. </p>
-<p> A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward e.g. Racecar </p>
+<p>A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward </p>
 <br>
 <h2>Enter your word below</h2>
+<form>
+    <input type="text" id="word" placeholder="Enter your word"><br><br>
+    <button onclick="myFunction(document.getElementById('word').value)">Submit</button>
 
-<form><!-- Form that takes user input -->
-    <input type="text" id="word" placeholder="Enter your word">
-    <br><br>
-    <button onclick="is_palindrome(event,document.getElementById('word').value)">Submit</button><!-- On the button click the function gets called and parses throught the value of the input text and the event -->
-  </form>
-  <p id="result"></p> <!-- Results of fuction is displayed -->
-  <br>
-  <a href = "palindromeGame.html"><button align = "center">Play a Palindrome Game!</button></a><!-- Link to Game site using a href -->
+    <!-- Button to link to palindromegame.html -->
+    <button onclick="window.location.href = 'palindromegame.html';">Go to Palindrome Game</button>
+</form>
 
+<script>
+    function myFunction(word) {
+        var resultElement = document.createElement("p");
+        document.body.appendChild(resultElement);
 
-<!-- Script Section-->
-  <script>
-    // Function is called with the parameters of the user input and the event
-    function is_palindrome(word,event) {
+        // Remove non-alphanumeric characters and convert to lowercase
+        var removeChar = word.replace(/[^A-Z0-9]/ig, "").toLowerCase();
 
-        // removes all characters from the input word that are not uppercase letters or digits. The resulting string is then converted to lowercase using toLowerCase();
-        // The '/' indicate start and end of statememt, '[]' indicates the/this specific chracter set
-        // 'A-Z' matches uppercase letters from 'A' to 'Z', and '0-9' matches digits from '0' to '9'.
-        // '[^A-Z0-9]'' matches any character that is not an uppercase letter or a digit.
-        //i: Case-insensitive match (e.g., 'a' matches 'A'). g: Global match, meaning it finds all matches 
-        // Sources: 
-        //https://docs.netapp.com/us-en/oncommand-insight/config-admin/regular-expression-examples.html#:~:text=the%20%5C1%20variable.-,The%20bracketed%20characters%20%5Ba%2DzA%2DZ0%2D9%5D,case)%20or%20digit%20will%20match.
-
-        var removed = word.replace(/[^A-Z0-9]/ig, "").toLowerCase();
-
-        // This code splits the word, reverses it and join them together 
-        var checkPalindrome = removed.split('').reverse().join('');
-
-        // Gets the element id to show the result
-        var resultElement = document.getElementById("result");
+        // Reverse removeChar for comparison
+        var checkPalindrome = removeChar.split('').reverse().join('');
 
         // Check if the string is a palindrome
-        if (removed === checkPalindrome) {
-            resultElement.textContent = "True! " + word + " is a palindrome.";
+        if (removeChar === checkPalindrome) {
+            resultElement.textContent = "True! " + [word] + " is a palindrome.";
         } else {
-            resultElement.textContent = "False! " + word + " is not a palindrome.";
+            resultElement.textContent = "False! " + [word] + " is not a palindrome.";
         }
-     }
-  </script>
-
+    }
+</script>
 </body>
 </html>
