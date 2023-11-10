@@ -1,41 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Palindrome Finder</title>
+    <title>Palindrome Checker</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-<h1>Palindrome Finder</h1>
+<h1>Palindrome Checker</h1>
 <br>
 <p>This simple Javascript function will allow you to check whether a given string is a palindrome or not. </p>
 <p>A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward </p>
 <br>
+<p>Enter a word to check if it's a palindrome.</p>
 <h2>Enter your word below</h2>
 <form>
     <input type="text" id="word" placeholder="Enter your word"><br><br>
-    <button onclick="myFunction(document.getElementById('word').value)">Submit</button>
-
-    <!-- Button to link to palindromegame.html -->
-    <button onclick="window.location.href = 'palindromegame.html';">Go to Palindrome Game</button>
+    <button type="button" onclick="is_palindrome(document.getElementById('word').value)">Check</button>
 </form>
-
+<a href ="palindromeGame.html"><button>Play a Palindrome Game!</button></a>
+<p id="result"></p>
 <script>
-    function myFunction(word) {
-        var resultElement = document.createElement("p");
-        document.body.appendChild(resultElement);
+    function is_palindrome(inputWord) {
+        var resultElement = document.getElementById("result");
 
-        // Remove non-alphanumeric characters and convert to lowercase
-        var removeChar = word.replace(/[^A-Z0-9]/ig, "").toLowerCase();
-
-        // Reverse removeChar for comparison
-        var checkPalindrome = removeChar.split('').reverse().join('');
-
-        // Check if the string is a palindrome
-        if (removeChar === checkPalindrome) {
-            resultElement.textContent = "True! " + [word] + " is a palindrome.";
+        if (isPalindromeString(inputWord)) {
+            resultElement.textContent = "Yes,"  + " " + inputWord + " " + " is a palindrome!";
         } else {
-            resultElement.textContent = "False! " + [word] + " is not a palindrome.";
+            resultElement.textContent = "No," + " " + inputWord +  " " +  "is not a palindrome.";
         }
+    }
+
+    function isPalindromeString(str) {
+        var cleanStr = str.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+        return cleanStr === cleanStr.split('').reverse().join('');
     }
 </script>
 </body>
