@@ -18,19 +18,23 @@
     <!-- Not with a string to pasre through just an event, the data gets called in the function itself-->
     <button onclick="is_palindrome(event)">Submit</button>
 </form>
+<!-- Displays the data-->
 <p id="result"></p>
 <p id="remaining-words"></p>
 <script>
+    // variable declaration
     var totalLives = 5;
+    // The array thay stores the users answers and that gets displayed
     var guessedPalindromes = [];
 
     function is_palindrome(event) {
         event.preventDefault(); // prevent form submission and page refresh
 
         var wordInput = document.getElementById("word");
-        var inputWord = wordInput.value;
-        var isPalindrome = isPalindromeString(inputWord);
+        var inputWord = wordInput.value;// Not neccesary really 
+        var isPalindrome = isPalindromeString(inputWord);// calling the function and parsing the users input
 
+        // Calling/Invoking <p> displays
         var resultElement = document.getElementById("result");
         var remainingWordsElement = document.getElementById("remaining-words");
 
@@ -39,10 +43,10 @@
                 guessedPalindromes.push(inputWord);
 
                 resultElement.textContent = "Correct! It's a palindrome.";
-                updateRemainingWords(remainingWordsElement);
+                updateRemainingWords(remainingWordsElement);// Chnages the count
                 updateGuessedCount();
 
-                // Check if the user has guessed all possible palindromes
+                // Check if the user has guessed 10 palindromes
                 if (guessedPalindromes.length === 10) {
                     resultElement.textContent = "Congratulations! You've guessed 10 palindromes.";
                     alert("Congratulations! You've guessed 10 palindromes.");
