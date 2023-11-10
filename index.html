@@ -7,7 +7,7 @@
 <h1>Palindrome Finder</h1>
 <br>
 <p>This simple Javascript function will allow you to check whether a given string is a palindrome or not. </p>
-<p> A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward </p>
+<p> A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward e.g. Racecar </p>
 <br>
 <h2>Enter your word below</h2>
 <form>
@@ -28,8 +28,10 @@ function myFunction(word) {
     // Check if the string is a palindrome
     if (removeChar === checkPalindrome) {
       resultElement.textContent = "True! " + [word] + "is a palindrome.";
+      console.log( "True! " + [word] + "is a palindrome.")
     } else {
       resultElement.textContent = "False! " + [word] + "is not a palindrome.";
+      console.log( "False! " + [word] + "is not a palindrome.")
     }
 }
 
