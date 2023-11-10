@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <head>
-    <!-- Heading of Page -->
-    <title>Palindrome Finder</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palindrome Finder</title>
     <!-- Linking to external CSS -->
     <link rel="stylesheet" href="index.css">
 </head>
@@ -29,13 +30,21 @@
     // Function is called with the parameters of the user input and the event
     function is_palindrome(word,event) {
 
-        // removes all characters from the input word that are not uppercase letters or digits. The resulting string is then converted to lowercase using 
+        // removes all characters from the input word that are not uppercase letters or digits. The resulting string is then converted to lowercase using toLowerCase();
+        // The '/' indicate start and end of statememt, '[]' indicates the/this specific chracter set
+        // 'A-Z' matches uppercase letters from 'A' to 'Z', and '0-9' matches digits from '0' to '9'.
+        // '[^A-Z0-9]'' matches any character that is not an uppercase letter or a digit.
+        //i: Case-insensitive match (e.g., 'a' matches 'A'). g: Global match, meaning it finds all matches 
+        // Sources: 
+        //https://docs.netapp.com/us-en/oncommand-insight/config-admin/regular-expression-examples.html#:~:text=the%20%5C1%20variable.-,The%20bracketed%20characters%20%5Ba%2DzA%2DZ0%2D9%5D,case)%20or%20digit%20will%20match.
+
         var removed = word.replace(/[^A-Z0-9]/ig, "").toLowerCase();
 
-        // Reverse removeChar for comparison
+        // This code splits the word, reverses it and join them together 
         var checkPalindrome = removed.split('').reverse().join('');
 
-        var resultElement = document.getElementById("result"); // Assuming there is an element with id="result" in your HTML
+        // Gets the
+        var resultElement = document.getElementById("result");
 
         // Check if the string is a palindrome
         if (removed === checkPalindrome) {
