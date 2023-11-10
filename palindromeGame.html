@@ -2,58 +2,87 @@
 <html>
 <head>
     <title>Palindrome Guessing Game</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="palindromGame.css">
 </head>
 <body>
 <h1>Palindrome Guessing Game</h1>
-<p>Guess if the given word is a palindrome or not. You have 10 chances.</p>
+<p>You have 5 lives to try and guess any 10 palindromes</p>
+<p>A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward e.g. Racecar</p>
+<p>You have guessed <span id="guessed-count">0</span> Palindromes, with <span id="remaining-lives">5</span> lives Remaining</p>
 <h2>Enter your word below</h2>
 <form>
     <input type="text" id="word" placeholder="Enter your word"><br><br>
-    <button onclick="playGame()">Submit</button>
+    <button onclick="playGame(event)">Submit</button>
 </form>
 <p id="result"></p>
+<p id="remaining-words"></p>
 <script>
-    var remainingChances = 10;
-    var palindromes = ["racecar", "level", "deified", "radar", "civic", "madam", "rotor", "noon", "stats", "tenet"];
-    var currentIndex = 0;
+    var totalLives = 5;
+    var guessedPalindromes = [];
 
-    function playGame() {
+    function playGame(event) {
+        event.preventDefault(); // prevent form submission and page refresh
+
         var wordInput = document.getElementById("word");
         var inputWord = wordInput.value;
         var isPalindrome = isPalindromeString(inputWord);
 
         var resultElement = document.getElementById("result");
+        var remainingWordsElement = document.getElementById("remaining-words");
 
-        if (remainingChances > 0) {
-            if (isPalindrome && inputWord === palindromes[currentIndex]) {
-                alert = "Correct! It's a palindrome.";
-                currentIndex++;
+        if (isPalindrome) {
+            if (guessedPalindromes.indexOf(inputWord) === -1) {
+                guessedPalindromes.push(inputWord);
+
+                resultElement.textContent = "Correct! It's a palindrome.";
+                updateRemainingWords(remainingWordsElement);
+                updateGuessedCount();
+
+                // Check if the user has guessed all possible palindromes
+                if (guessedPalindromes.length === 10) {
+                    resultElement.textContent = "Congratulations! You've guessed 10 palindromes.";
+                    alert("Congratulations! You've guessed 10 palindromes.");
+                }
             } else {
-                resultElement.textContent = "Sorry, that's not a palindrome.";
+                resultElement.textContent = "You've already guessed this palindrome.";
             }
-
-            if (currentIndex < palindromes.length) {
-                resultElement.textContent += " Next word: " + palindromes[currentIndex];
-            } else {
-                resultElement.textContent += " Game Over. You've completed the game!";
-            }
-
-            remainingChances--;
-
-            // Delay before clearing the result (e.g., 3 seconds)
-            setTimeout(function () {
-                resultElement.textContent = "";
-            }, 3000);
         } else {
-            resultElement.textContent = "Game Over. You've used up all your chances.";
+            resultElement.textContent = "Sorry, that's not a palindrome.";
+            totalLives--;
+
+            // Update the display of remaining lives
+            updateRemainingLives();
+
+            if (totalLives === 0) {
+                resultElement.textContent = "Game Over. You've run out of lives.";
+                alert("Game Over. You've run out of lives.");
+            }
         }
+
+        wordInput.value = "";
+    }
+
+    // Update the display of remaining lives
+    function updateRemainingLives() {
+        document.getElementById("remaining-lives").textContent = totalLives;
+    }
+
+    // Update the display of guessed palindrome count
+    function updateGuessedCount() {
+        document.getElementById("guessed-count").textContent = guessedPalindromes.length;
     }
 
     function isPalindromeString(str) {
         var cleanStr = str.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
         return cleanStr === cleanStr.split('').reverse().join('');
     }
+
+    function updateRemainingWords(element) {
+        element.textContent = "Guessed words: " + guessedPalindromes.join(", ");
+    }
+
+    // Initial display of remaining lives
+    updateRemainingLives();
 </script>
 </body>
 </html>

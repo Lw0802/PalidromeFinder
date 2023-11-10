@@ -1,0 +1,81 @@
+/* Apply a background color and text color to the body */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Apply styling to paragraphs */
+p {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: #333;
+}
+
+/* Style the h1 element (Palindrome Finder) */
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Style the h2 element (Enter your word here) */
+h2 {
+    text-align: center;
+    color: #666;
+}
+
+/* Style the form container */
+form {
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the input field */
+input[type="text"] {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style the submit button */
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the button */
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Style the result and remaining words paragraphs */
+#result, #remaining-words {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+/* Style the game over message */
+#result:contains("Game Over") {
+    color: #d9534f;
+}
+
+/* Add more styles as needed */
