@@ -46,21 +46,21 @@
                 updateRemainingWords(remainingWordsElement);// Chnages the count
                 updateGuessedCount();
 
-                // Check if the user has guessed 10 palindromes
+                // Check if the user has guessed 10 palindromes they win the game
                 if (guessedPalindromes.length === 10) {
-                    resultElement.textContent = "Congratulations! You've guessed 10 palindromes.";
-                    alert("Congratulations! You've guessed 10 palindromes.");
+                    resultElement.textContent = "Congratulations! You've guessed 10 palindromes."; // dispaly the message in results
+                    alert("Congratulations! You've guessed 10 palindromes."); // display in alerts
                 }
             } else {
-                resultElement.textContent = "You've already guessed this palindrome.";
+                resultElement.textContent = "You've already guessed this palindrome.";// dispaly the message in results
             }
         } else {
-            resultElement.textContent = "Sorry, that's not a palindrome.";
+            resultElement.textContent = "Sorry, that's not a palindrome.";// dispaly the message in results
             totalLives--;
 
             // Update the display of remaining lives
             updateRemainingLives();
-
+            // If the user guess a word that is not a palindrome they loose a life
             if (totalLives === 0) {
                 resultElement.textContent = "Game Over. You've run out of lives.";
                 alert("Game Over. You've run out of lives.");
@@ -79,7 +79,16 @@
     function updateGuessedCount() {
         document.getElementById("guessed-count").textContent = guessedPalindromes.length;
     }
-
+    
+        // Fucntion that does the same thing as previous page and checks if it is a palindrome
+        // removes all characters from the input word that are not uppercase letters or digits. The resulting string is then converted to lowercase using toLowerCase();
+        // The '/' indicate start and end of statememt, '[]' indicates the/this specific chracter set
+        // 'A-Z' matches uppercase letters from 'A' to 'Z', and '0-9' matches digits from '0' to '9'.
+        // '[^A-Z0-9]'' matches any character that is not an uppercase letter or a digit.
+        //i: Case-insensitive match (e.g., 'a' matches 'A'). g: Global match, meaning it finds all matches 
+        // Sources: 
+        //https://docs.netapp.com/us-en/oncommand-insight/config-admin/regular-expression-examples.html#:~:text=the%20%5C1%20variable.-,The%20bracketed%20characters%20%5Ba%2DzA%2DZ0%2D9%5D,case)%20or%20digit%20will%20match.
+        
     function isPalindromeString(str) {
         var cleanStr = str.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
         return cleanStr === cleanStr.split('').reverse().join('');
