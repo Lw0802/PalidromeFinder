@@ -19,6 +19,7 @@
     <!-- On the button click the function gets called and parses throught the value of the input text -->
     <button onclick="myFunction(document.getElementById('word').value)">Submit</button>
   </form>
+  <p id="result"></p>
   <br>
   <a href = "palindromeGame.html"><button>Go to Palindrome Game</button></a>
 
@@ -33,13 +34,13 @@ function myFunction(word) {
     // Reverse removeChar for comparison
     var checkPalindrome = removeChar.split('').reverse().join('');
 
+    var resultElement = document.getElementById("result"); // Assuming there is an element with id="result" in your HTML
+
     // Check if the string is a palindrome
     if (removeChar === checkPalindrome) {
       resultElement.textContent = "True! " + [word] + "is a palindrome.";
-      console.log( "True! " + [word] + "is a palindrome.")
     } else {
       resultElement.textContent = "False! " + [word] + "is not a palindrome.";
-      console.log( "False! " + [word] + "is not a palindrome.")
     }
 }
 
