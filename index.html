@@ -12,11 +12,18 @@
 <p> A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward e.g. Racecar </p>
 <br>
 <h2>Enter your word below</h2>
+<!-- Form that takes user input -->
 <form>
-    <input type="text" id="word" placeholder="Enter your word"><br><br>
+    <input type="text" id="word" placeholder="Enter your word">
+    <br><br>
+    <!-- On the button click the function gets called and parses throught the value of the input text -->
     <button onclick="myFunction(document.getElementById('word').value)">Submit</button>
   </form>
-  <button onclick="window.location.href = 'palindromegame.html';">Go to Palindrome Game</button>
+  <br>
+  <a href = "palindromeGame.html"><button>Go to Palindrome Game</button></a>
+
+
+
   <script>
 
 function myFunction(word) {
