@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <!-- Title of webapge-->
     <title>Palindrome Checker</title>
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
 <h1>Palindrome Checker</h1>
 <br>
+<!-- Basic information-->
 <p>This simple Javascript function will allow you to check whether a given string is a palindrome or not. </p>
 <p>A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward </p>
 <br>
@@ -14,14 +16,20 @@
 <h2>Enter your word below</h2>
 <form>
     <input type="text" id="word" placeholder="Enter your word"><br><br>
+    <!-- On the button click call the function and parse the value of the users inout-->
     <button type="button" onclick="is_palindrome(document.getElementById('word').value)">Check</button>
 </form>
-<a href ="palindromeGame.html"><button>Play a Palindrome Game!</button></a>
+<a href ="palindromeGame.html"><button>Play a Palindrome Game!</button></a><!-- Button with a href to another page-->
 <p id="result"></p>
 <script>
+  //Fucntion with a string as a parameter
     function is_palindrome(inputWord) {
         var resultElement = document.getElementById("result");
 
+        // You could have it all in here just wanted to demonstrate with more than one function
+        // Script files are generally in another file and you call to it but for now its in one
+        // e.g you would have an external .js file
+        // Displayes the ouput to the user in the <p> called result
         if (isPalindromeString(inputWord)) {
             resultElement.textContent = "Yes,"  + " " + inputWord + " " + " is a palindrome!";
         } else {
@@ -29,8 +37,19 @@
         }
     }
 
+     // Fucntion that does the same thing as previous page and checks if it is a palindrome
+        // removes all characters from the input word that are not uppercase letters or digits. The resulting string is then converted to lowercase using toLowerCase();
+        // The '/' indicate start and end of statememt, '[]' indicates the/this specific chracter set
+        // 'A-Z' matches uppercase letters from 'A' to 'Z', and '0-9' matches digits from '0' to '9'.
+        // '[^A-Z0-9]'' matches any character that is not an uppercase letter or a digit.
+        //i: Case-insensitive match (e.g., 'a' matches 'A'). g: Global match, meaning it finds all matches 
+        // Sources: 
+        //https://docs.netapp.com/us-en/oncommand-insight/config-admin/regular-expression-examples.html#:~:text=the%20%5C1%20variable.-,The%20bracketed%20characters%20%5Ba%2DzA%2DZ0%2D9%5D,case)%20or%20digit%20will%20match.
+        
     function isPalindromeString(str) {
         var cleanStr = str.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+        // The function returns a string that is in lowercase and removed any characters
+        // The if statement will compare the two words
         return cleanStr === cleanStr.split('').reverse().join('');
     }
 </script>
