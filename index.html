@@ -5,6 +5,7 @@
     <!-- Linking to external CSS -->
     <link rel="stylesheet" href="index.css">
 </head>
+
 <body>
 <h1>Palindrome Finder</h1>
 <br>
@@ -12,38 +13,38 @@
 <p> A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward and backward e.g. Racecar </p>
 <br>
 <h2>Enter your word below</h2>
-<!-- Form that takes user input -->
-<form>
+
+<form><!-- Form that takes user input -->
     <input type="text" id="word" placeholder="Enter your word">
     <br><br>
-    <!-- On the button click the function gets called and parses throught the value of the input text -->
-    <button onclick="is_palindrome(document.getElementById('word').value)">Submit</button>
+    <button onclick="is_palindrome(event,document.getElementById('word').value)">Submit</button><!-- On the button click the function gets called and parses throught the value of the input text and the event -->
   </form>
-  <p id="result"></p>
+  <p id="result"></p> <!-- Results of fuction is displayed -->
   <br>
-  <a href = "palindromeGame.html"><button>Go to Palindrome Game</button></a>
+  <a href = "palindromeGame.html"><button>Play a Palindrome Game!</button></a><!-- Link to Game site using a href -->
 
 
-
+<!-- Script Section-->
   <script>
+    // Function is called with the parameters of the user input and the event
+    function is_palindrome(word,event) {
 
-function is_palindrome(word) {
-    // Remove non-alphanumeric characters and convert to lowercase
-    var removeChar = word.replace(/[^A-Z0-9]/ig, "").toLowerCase();
+        // removes all characters from the input word that are not uppercase letters or digits. The resulting string is then converted to lowercase using 
+        var removed = word.replace(/[^A-Z0-9]/ig, "").toLowerCase();
 
-    // Reverse removeChar for comparison
-    var checkPalindrome = removeChar.split('').reverse().join('');
+        // Reverse removeChar for comparison
+        var checkPalindrome = removed.split('').reverse().join('');
 
-    var resultElement = document.getElementById("result"); // Assuming there is an element with id="result" in your HTML
+        var resultElement = document.getElementById("result"); // Assuming there is an element with id="result" in your HTML
 
-    // Check if the string is a palindrome
-    if (removeChar === checkPalindrome) {
-      resultElement.textContent = "True! " + [word] + "is a palindrome.";
-    } else {
-      resultElement.textContent = "False! " + [word] + "is not a palindrome.";
-    }
-}
-
+        // Check if the string is a palindrome
+        if (removed === checkPalindrome) {
+          resultElement.textContent = "True! " + [word] + "is a palindrome.";
+        } else {
+          resultElement.textContent = "False! " + [word] + "is not a palindrome.";
+        }
+     }
   </script>
+
 </body>
 </html>
