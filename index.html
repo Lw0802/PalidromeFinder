@@ -17,21 +17,21 @@
   </form>
   <script>
 
-    function myFunction(word) {
-        
-    
-        var removeChar = word.replace(/[^A-Z0-9]/ig, "").toLowerCase();
-     /* reverse removeChar for comparison*/
-  var checkPalindrome = removeChar.split('').reverse().join('');
+function myFunction(word) {
+    // Remove non-alphanumeric characters and convert to lowercase
+    var removeChar = word.replace(/[^A-Z0-9]/ig, "").toLowerCase();
 
-/* Check to see if str is a Palindrome*/
- if(removeChar === checkPalindrome){
-   alert("true")
- }else{
-  alert("false")
- }
+    // Reverse removeChar for comparison
+    var checkPalindrome = removeChar.split('').reverse().join('');
 
+    // Check if the string is a palindrome
+    if (removeChar === checkPalindrome) {
+        alert("true");
+    } else {
+        alert("false");
+    }
 }
+
   </script>
 </body>
 </html>
